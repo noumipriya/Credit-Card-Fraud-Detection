@@ -6,26 +6,25 @@ import seaborn as sns
 from matplotlib import gridspec 
 
 
-# In[2]:
 
 
 data = pd.read_csv("creditcard.csv") 
 
 
-# In[3]:
+
 
 
 data.head()
 
 
-# In[4]:
+
 
 
 print(data.shape) 
 print(data.describe()) 
 
 
-# In[5]:
+
 
 
 fraud = data[data['Class'] == 1] 
@@ -36,19 +35,16 @@ print('Fraud Cases: {}'.format(len(data[data['Class'] == 1])))
 print('Valid Transactions: {}'.format(len(data[data['Class'] == 0])))
 
 
-# In[6]:
-
 
 fraud.Amount.describe() 
 
 
-# In[7]:
+
 
 
 valid.Amount.describe() 
 
 
-# In[8]:
 
 
 corrmat = data.corr() 
@@ -57,7 +53,7 @@ sns.heatmap(corrmat, vmax = .8, square = True)
 plt.show() 
 
 
-# In[9]:
+
 
 
 X = data.drop(['Class'], axis = 1) 
@@ -70,7 +66,7 @@ xData = X.values
 yData = Y.values 
 
 
-# In[10]:
+:
 
 
 # Using Skicit-learn to split data into training and testing sets 
@@ -80,7 +76,7 @@ xTrain, xTest, yTrain, yTest = train_test_split(
 		xData, yData, test_size = 0.2, random_state = 42) 
 
 
-# In[12]:
+
 
 
 # Building the Random Forest Classifier (RANDOM FOREST) 
@@ -92,7 +88,7 @@ rfc.fit(xTrain, yTrain)
 yPred = rfc.predict(xTest) 
 
 
-# In[13]:
+
 
 
 # Evaluating the classifier 
@@ -123,13 +119,12 @@ MCC = matthews_corrcoef(yTest, yPred)
 print("The Matthews correlation coefficient is{}".format(MCC)) 
 
 
-# In[14]:
+
 
 
 LABELS = ['Normal', 'Fraud'] 
 
 
-# In[15]:
 
 
 LABELS = ['Normal', 'Fraud'] 
